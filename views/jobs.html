@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+    <link rel="stylesheet" href="/css/site.css">
+    <title>Mark's job listing site - Vacancies</title>
+
+</head>
+
+<body>
+    <hr>
+    <nav>
+        <a href="/"><b>Home</b></a> | <a href="/about"><b>About</b></a> |
+         <a href="/location"><b>Locations</b></a> | <a href="/employer"><b>Employers</b></a> |
+         <a href="/job"><b>Job List</b></a> | <a href="/contact"><b>Contact</b></a>
+    </nav>
+    
+    <hr>
+    <h1>Job vacancy list</h1>   
+    <p>Click the button below veiw job vacancies that you can apply.</p>
+
+    <button id="btn-experience">View Jobs</button>  
+
+    <div class="container"></div>
+
+
+    <footer>
+        <hr>
+        Copyright ©2020 | Powered by <a href="https://expressjs.com/">Express</a>  
+        
+    </footer>
+
+    <script>
+        let div = document.querySelector('div')
+        let btnexperience = document.querySelector('#btn-experience')
+       
+
+        function getData() {
+            // creates request object
+            request = new XMLHttpRequest()
+
+            // configures request object
+            request.open("GET", "http://localhost:3000/job/api")
+
+            // this function runs when the response from
+            // data loads
+            function getResponse() {
+
+                let data = JSON.parse(this.response); // 'this' refers to `request` object
+                console.log('job object -- ')
+                console.log(data)
+
+                // to set the innerText of div
+                let vacancy = data;
+                let html = '';
+                vacancy.forEach(job => {
+                    let htmlSegment = `<div class="user">                      
+                    <hr>                          
+                    <p> Position : ${job.position}</p>
+                    <p>Job description: ${job.description}</p>
+                    <p> Employer: ${job.company}</p>     
+                    
+                    `;
+                    //--To Do -- get total years using map reduce
+                    // let totalyrs = map(user.years)
+                    // console.log(totalyrs)
+
+                    html += htmlSegment;
+                });
+
+                let container = document.querySelector('.container');
+                container.innerHTML = html;
+
+
+            }
+
+            request.addEventListener("load", getResponse)
+
+            // actually sends the request!!
+            request.send();
+        }     
+        getData()
+
+    </script>
+</body>
+
+</html>

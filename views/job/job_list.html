@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+    <link rel="stylesheet" href="/css/site.css">
+    <title>Mark's job listing site</title>
+    
+</head>
+
+<body>
+    <hr>
+    <nav>
+      <a href="/"><b>Home</b></a> | <a href="/about"><b>About</b></a> |
+       <a href="/location"><b>Locations</b></a> | <a href="/employer"><b>Employers</b></a> |
+       <a href="/job"><b>Job List</b></a> | <a href="/contact"><b>Contact</b></a>
+  </nav>
+    
+    <hr>
+    <h1>Job Lists</h1>
+
+    <a href="/job/new">Create new vacancy</a>
+      
+    <br><br>
+       
+    <div class="container"></div>
+    <table>
+        <thead>
+          <tr>
+            <th>Job Title</th>
+            <th>Position Description</th>
+            <th>Employer</th>    
+            <th></th> 
+            <th></th>  
+          </tr>
+        </thead>
+        <tbody id="tr">        
+         
+        </tbody>
+      </table>
+
+<footer>
+    <hr>
+    Copyright ©2020 | Powered by <a href="https://expressjs.com/">Express</a>  
+    
+</footer>
+<!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
+<script src="/js/dist/axios.min.js"></script>
+<script src="/js/joblist.js"></script>
+</body>
+
+</html>
